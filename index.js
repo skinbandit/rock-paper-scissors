@@ -36,9 +36,55 @@ function getHumanChoice () {
         
 }
 
+
+//pelaajien tulosten muuttujat
+
 let humanScore = 0;
 let computerScore = 0;
 
-//pelaajien tulosten 
+//yhden kierroksen pelaamisen logiikka
 
+function playRound (humanChoice, computerChoice) {
+   if (humanSelection =="kivi" && computerSelection == "kivi") {
+    console.log ("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Tulos on tasapeli!")
+   } else if (humanSelection == "kivi" && computerSelection == "paperi") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Hävisit!")
+    computerScore++;
+   } else if (humanSelection == "kivi" && computerSelection == "sakset") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Voitit!")
+    humanScore++;
+   } 
+   
+   else if (humanSelection == "sakset" && computerSelection == "paperi") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Voitit!")
+    humanScore++;
+   } else if (humanSelection == "sakset" && computerSelection == "sakset") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Tasapeli!")
+    } else if (humanSelection == "sakset" && computerSelection == "kivi") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Hävisit!")
+        computerScore++
+    } 
+    
+    else if (humanSelection == "paperi" && computerSelection == "paperi") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Tasapeli!")
+   } else if (humanSelection == "paperi" && computerSelection == "sakset") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Hävisit!")
+        computerScore++;
+    } else if (humanSelection == "paperi" && computerSelection == "kivi") {
+    console.log("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
+        +computerSelection+". Voitit!")
+        humanScore++
+    }
+}
+
+const humanSelection = getHumanChoice ()
+const computerSelection = getComputerChoice ()
 
