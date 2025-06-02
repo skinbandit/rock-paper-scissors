@@ -21,16 +21,17 @@ function getComputerChoice(min, max) {
 //laita prompt, mihin ihminen voi laittaa kiven, saket tai paperin
 
 let nimi = prompt('Valitse kivi, sakset tai paperi')
+let nimi2 = nimi.toLowerCase();
 const rock = "kivi";
 const paper = "paperi";
 const scissors = "sakset";
 
 function getHumanChoice () {
-    if (nimi === "kivi") {
+    if (nimi2 === "kivi") {
         return rock
-    } else if (nimi === "sakset") {
+    } else if (nimi2 === "sakset") {
         return scissors
-    } else if (nimi === "paperi") {
+    } else if (nimi2 === "paperi") {
         return paper
     }
         
@@ -44,7 +45,7 @@ let computerScore = 0;
 
 //yhden kierroksen pelaamisen logiikka
 
-function playRound (humanChoice, computerChoice) {
+function playRound (humanSelection, computerSelection) {
    if (humanSelection =="kivi" && computerSelection == "kivi") {
     console.log ("Valitsit arvon "+humanSelection+", tietokone valitsi arvon "
         +computerSelection+". Tulos on tasapeli!")
@@ -88,3 +89,33 @@ function playRound (humanChoice, computerChoice) {
 const humanSelection = getHumanChoice ()
 const computerSelection = getComputerChoice ()
 
+
+//playGame pitäisi kutsua playRound funktio 5 kertaa
+//pisteet alkaa nollista, mutta eivät nollaannu
+//viiden kierroksen jälkeen julkista voittajaksi se, jolla enemmän pisteitä
+//kysy joka kierroksen jälkeen uutta humanSelectionia 
+
+
+function playGame () {
+    for (let i=0; i<5; i++){
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice ();
+        playRound(humanSelection, computerSelection);
+    }
+    console.log ("Pelin lopputulos:");
+    console.log ("Ihmisen pisteet: " +humanScore);
+    console.log ("Tietokoneen pisteet: "+computerScore)
+    if (humanScore > computerScore) {
+        console.log ("Voitit pelin!")
+    } else if (humanScore < computerScore) {
+        console.log ("Hävisit pelin!")
+    } else {
+        console.log("Tasapeli!")
+    }
+}
+
+playGame()
+
+//tee uusi play game. loopilla saa
+//ota vaikka human choice eka viis kertaa ja sit ota tietokoneen sama
+//vertaile ja tee muut härpäkkeet
